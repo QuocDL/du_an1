@@ -33,7 +33,6 @@
     right: 100px;
     border: 5px solid white; 
     border-radius: 15px;">
-          <!-- <video controls autoplay src="https://youtu.be/L7qbjrmQ728" width="520px" height="293px"></video> -->
           <iframe style="border-radius: 10px;" width="780" height="480" src="https://www.youtube.com/embed/L7qbjrmQ728" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
