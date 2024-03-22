@@ -1,0 +1,37 @@
+<?php 
+
+function select_all_size()
+{
+    $sql = "SELECT * FROM size ORDER BY size_id ";
+    return pdo_query($sql);
+}
+
+function select_all_color()
+{
+    $sql = "SELECT * FROM color_type ORDER BY color_type_id ";
+    return pdo_query($sql);
+}
+
+function count_all_products($category_id)
+{
+    $sql = "SELECT COUNT(*) FROM products WHERE category_id = ?";
+    return pdo_query_value($sql,$category_id);
+}
+
+function select_home_product($sortDescending, $category_id)
+{
+    $sql = "SELECT * FROM products WHERE category_id = ? ORDER BY product_id " . ($sortDescending ? "DESC" : "ASC") . " LIMIT 8";
+    return pdo_query($sql, $category_id);
+}
+function select_product_color($product_code)
+{
+$sql = "SELECT color_name.*,product_color.* FROM products JOIN product_color ON products.product_id = product_color.product_id 
+        JOIN color_name ON product_color.color_name_id = color_name.color_name_id WHERE products.product_code = ?";
+    return pdo_query($sql, $product_code);
+}
+function selectAll_product_phantrang($category_id, $sortDescending, $start, $limit)
+{
+    $sql = "SELECT * FROM products WHERE category_id = ? ORDER BY product_id " . ($sortDescending ? "DESC" : "ASC") . " LIMIT $start, $limit";
+    return pdo_query($sql, $category_id);
+}
+?>

@@ -179,3 +179,5 @@
     showSlides();
 
   </script>
+
+  <?php require ".$INCLUDES_URL/footer.php"?>
