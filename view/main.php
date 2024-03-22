@@ -155,51 +155,7 @@
 
 
   <script>
-    // phần showw ảnh phẩn sản phẩm
-    // var dip= document.getElementsByClassName('dip');
-    // console.log(dip);
-
-    // const x=document.getElementsByClassName('dip');
-    // const y=document.getElementById('dip_show');
-    // console.log(x[0].src);
-    // const z =y.src;
-
-    //     x[0].onmouseover=function () {
-    //         y.src=this.src;
-    // }
-    // x[0].onmouseout=function () {
-    //     y.src=z;
-    // }
-    // function myd(e) {
-    //     let v = e.getElementsByClassName('dip')[0];
-    //     y.src=v.src;
-    // }
-    // let imgsrc ='';
-
-    // function get(e){
-    //     let img = e.querySelector('img');
-    //     imgsrc = img.getAttribute('src');
-    // console.log(imgsrc);
-    // return imgsrc;
-    // y.src = imgsrc;
-    // }
-    // var x = get(e);
-    // console.log(imgsrc);
-
-    // let defaultImageSrc = z;
-
-    // function updateImageSrc(element) {
-    //   let imgElement = element.querySelector('img');
-    //   let imgSrc = imgElement.getAttribute('src');
-    //   let dipShowImg = document.getElementById('dip_show');
-    //   dipShowImg.src = imgSrc;
-    // }
-
-    // function resetImageSrc() {
-    //   let dipShowImg = document.getElementById('dip_show');
-    //   dipShowImg.src = defaultImageSrc;
-    // }
-
+  
     // phần slide show
     let slideIndex = 0;
 
@@ -223,22 +179,4 @@
     }
     showSlides();
 
-    // function showMenubar() {
-    //   document.onscroll = function() {
-    //     const scollTop = window.scrollY || document.documentElement.scrollTop;
-    //     const header = document.getElementsByClassName("header_row1");
-    //     const header1 = document.getElementsByClassName("header1");
-    //     // console.log(header);
-    //     header[0].style.display = "";
-    //     if (scollTop >= 300) {
-    //       header[1].style.display = "none";
-    //       header1[0].style.background = "#fff";
-    //     } else {
-    //       header[0].style.display = "none";
-    //       header[1].style.display = "";
-    //       header1[0].style.background = "";
-    //     }
-    //   };
-    // }
-    // showMenubar();
   </script>
