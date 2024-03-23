@@ -24,10 +24,10 @@
 
   <main id="main-content">
     <div class="main-banner">
-      <img src="../../du_an1/asset/images/thoi_trang_nu.jpg" alt="" class="main-banner-img" />
+      <img src="../../du_an1/asset/images/BANNER_CATE_T4-01cc.jpg" alt="" class="main-banner-img" />
     </div>
 
-    <h3 class="category-title">Thời Trang Nữ</h3>
+    <h3 class="category-title">NEW ARRIVALS</h3>
 
     <div class="functions">
       <div class="filter-function">
@@ -35,8 +35,8 @@
         <i class="fa-solid fa-filter"></i>
       </div>
       <?php  // Lấy tổng số sản phẩm
-          $category_id = 2;
-          $totalProducts = count_all_products($category_id);?>
+          $product_status = 1;
+          $totalProducts = count_allnews_products(1);?>
       <div class="view-function">
       <strong><?php echo $totalProducts?></strong> sản phẩm 
       </div>
@@ -53,7 +53,7 @@
     <div class="main-colums">
       <!-- block filter -->
 
-      <?php require "./includes/filter_product_female.php" ?>
+      <?php require "./includes/filter_product_new.php" ?>
 
       <div class="product-colum">
         <div class="product-row row-col-4">
@@ -69,13 +69,12 @@
           // Lấy dữ liệu sản phẩm cho trang hiện tại
 
           // Lấy tổng số sản phẩm
-          $category_id = 2;
-          $totalProducts = count_all_products($category_id);
+          // $totalProducts = count_allnews_products(1);
           // var_dump($totalProducts);
 
           // Tính tổng số trang dựa trên tổng số sản phẩm và số sản phẩm trên mỗi trang
           $totalPages = ceil($totalProducts / $itemsPerPage);
-          $product_result = isset($_GET['page']) ? selectAll_product_phantrang($category_id, false, $start, $itemsPerPage) : select_home_product(true, 2);;
+          $product_result = isset($_GET['page']) ? selectAll_news_product_phantrang(false, $start, $itemsPerPage,1) : selectAll_product(true,1);
           foreach ($product_result as $key => $value) : ?>
             <!-- start item -->
             <div class="product-item">
@@ -166,7 +165,7 @@
       GỢI Ý CHO BẠN: CÁC SẢN PHẨM ĐƯỢC QUAN TÂM NHẤT
     </h3>
     <div class="my-slickSilder">
-      <?php $product_result = select_home_product(true, 2); ?>
+      <?php $product_result = selectAll_product(true, 1); ?>
       <?php foreach ($product_result as $key => $value) : ?>
         <!-- start item -->
         <div class="product-item" id="product-list">
@@ -207,5 +206,4 @@
     </div>
   </div>
 </div>
-
 <?php require "./includes/footer.php" ?>

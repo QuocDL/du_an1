@@ -71,10 +71,10 @@
       </a>
     </div>
     <li class="header-nav-item">
-      <a class="header-nav-link" href="/du_an1/index.php?action=male-fashion">NAM</a>
+      <a class="header-nav-link" href="/du_an1/male-fashion?page=1">NAM</a>
     </li>
     <li class="header-nav-item">
-      <a class="header-nav-link" href="/du_an1/index.php?action=female-fashion">NỮ</a>
+      <a class="header-nav-link" href="/du_an1/female-fashion?page=1">NỮ</a>
     </li>
     <li class="header-nav-item">
       <a class="header-nav-link" href="/du_an1/news-fashion?page=1">NEW</a>
