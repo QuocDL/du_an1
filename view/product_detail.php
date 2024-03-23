@@ -130,6 +130,7 @@
             <div class="product-content-right">
               <!--Show Product Name -->
               <h1 class="product_detail_name"><?= $product_result['product_name'] . "-" . $product_result['product_code'] ?></h1>
+              <p><?= $product_result['product_desc'] ?></p>
               <!-- End -->
               <!-- format money -->
               <?php

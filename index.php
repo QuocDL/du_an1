@@ -39,6 +39,9 @@ switch ($action) {
    case 'product_add_quantity_to_cart':
     require ".$CONTROLLER_URL/product_add_quantity_to_cart.php";
     break;
+  case 'get_product_info':
+    require ".$CONTROLLER_URL/get_product_info.php";
+    break;
   default:
     echo "Không có gì";
     break;
