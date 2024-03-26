@@ -49,7 +49,13 @@ switch ($action) {
   case 'get_product_info':
     require ".$CONTROLLER_URL/get_product_info.php";
     break;
-
+  // ------------- Bình Luận --------------
+   case 'delete_bl':
+    require ".$CONTROLLER_URL/delete_bl.php";
+    break;
+  case 'update_bl':
+    require ".$CONTROLLER_URL/update_bl.php";
+    break;
 
     // ------------Tài Khoản---------------
     case 'login':
