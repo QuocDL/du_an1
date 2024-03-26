@@ -5,8 +5,6 @@ if(isset($_POST['productId'])){
     $color_name_id = $_POST['colorNameId'];
     $product_quantity = select_quantity_by_size($size_id,$color_name_id,$product_id);
     $size_name = select_size_by_id($product_quantity['size_id']);
-    // var_dump($product_quantity);
-    // echo $product_quantity['quantity'];
     $array = [
         [
             'quantity' => $product_quantity['quantity']
