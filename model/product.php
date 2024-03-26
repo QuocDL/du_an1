@@ -1,16 +1,5 @@
 <?php
 
-function add_product($product_name, $product_price, $product_main_image, $product_hover_main_image, $product_discount, $gender, $product_code, $product_description, $category_id)
-{
-    $sql = "INSERT INTO products(product_name,product_price,main_image_url,hover_main_image_url,discount,gender,product_code,product_desc,category_id) VALUES(?,?,?,?,?,?,?,?,?)";
-    return pdo_execute_return_lastInsertId($sql, $product_name, $product_price, $product_main_image, $product_hover_main_image, $product_discount, $gender, $product_code, $product_description, $category_id);
-}
-
-function add_images_product($images, $color_name_id, $product_id)
-{
-    $sql = "INSERT INTO images(image_url,color_name_id,product_id) VALUES(?,?,?)";
-    pdo_execute($sql, $images, $color_name_id, $product_id);
-}
 function selectAll_product($sortDescending,$product_status)
 {
     $sql = "SELECT * FROM products WHERE product_status = ? ORDER BY product_id " . ($sortDescending ? "DESC" : "ASC");

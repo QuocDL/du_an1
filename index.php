@@ -6,11 +6,11 @@ require ".$MODEL_URL/pdo.php";
 require ".$MODEL_URL/product.php";
 require ".$MODEL_URL/banner.php";
 require ".$MODEL_URL/comment.php";
-
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 // echo $action;
 switch ($action) {
   case 'index';
+  // echo $action;
     require ".$VIEW_URL/main.php";
     break;
     // ----------San Pham---------------
@@ -29,7 +29,7 @@ switch ($action) {
 
 
 
-  // Bổ sung product DETAIL và CART
+  // Bổ sung product DETAIL và chức năng add vào cart
   case 'check-quanity':
     require ".$CONTROLLER_URL/check_product_quantity.php";
     break;
@@ -137,8 +137,7 @@ switch ($action) {
     require ".$VIEW_URL/boloc/mau-sac-sale.php";
     break;
   default:
-    echo "Không có gì";
+    echo 'Đang làm thêm trang 404';
     break;
 }
 
-// require "./includes/footer2.php";
