@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+// test commit
 require "./global.php";
 require ".$MODEL_URL/pdo.php";
 require ".$MODEL_URL/product.php";
