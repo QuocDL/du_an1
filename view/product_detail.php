@@ -187,7 +187,7 @@
                   <input type="number" disabled value="1" id="product-detail-inc-quantity" class="product-detail-inc-quantity" />
                   <i class="fa-solid fa-plus product-detail-inc-plus" id="product-detail-inc-plus " class="cartModal-inc-plus"></i>
                 </div>
-                <button type="button" id="addToCart" class="product-detail-toCart">Mua Ngay</button>
+                <button type="button" id="addToCart" class="product-detail-toCart">Mua ngay</button>
                 <i class="fa-regular fa-heart product-detail-favorite"></i>
               </div>
               <span id="quantity_product"></span>
