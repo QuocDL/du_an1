@@ -82,9 +82,13 @@
 </div>
 
 
+<?php require ".$INCLUDES_URL/favorite_product.php" ?>
 
+<?php require ".$INCLUDES_URL/cart_modal.php" ?>
 
+<?php require ".$INCLUDES_URL/delete_cart_confirm.php" ?>
 
+<?php require ".$INCLUDES_URL/loading.php" ?>
 
 <?php require ".$INCLUDES_URL/header_nav.php" ?>
 <div class="wrapper">
@@ -105,7 +109,7 @@
           ?>
 
           <ul class="breadcrumbs">
-            <li>Trang chủ  /</li>
+            <li>Trang chủ /</li>
             <li><?= $product_result['product_name'] . " - " . $product_result['product_code'] ?></li>
             <!-- <li id="test2">Click Me</li> -->
           </ul>
@@ -117,7 +121,6 @@
                 <?php foreach ($image_result as $key => $value) : ?>
                   <img src="../..<?= $ROOT_URL . $value['image_url'] ?>" alt="Ảnh sản phẩm">
                 <?php endforeach ?>
-           
               </div>
               <div id="second-slider" class="slider-nav second-image-slider">
                 <?php foreach ($image_result as $key => $value) : ?>
@@ -130,7 +133,6 @@
             <div class="product-content-right">
               <!--Show Product Name -->
               <h1 class="product_detail_name"><?= $product_result['product_name'] . "-" . $product_result['product_code'] ?></h1>
-              <p><?= $product_result['product_desc'] ?></p>
               <!-- End -->
               <!-- format money -->
               <?php
@@ -169,6 +171,7 @@
                   <?php $size_result = select_size_by_id($size['size_id']); ?>
                   <span class="product-detail-size submitSize" product_id="<?= $_GET['product_id']; ?>" size-id="<?= $size['size_id'] ?>"><?= $size_result['size_name'] ?></span>
                 <?php endforeach ?>
+                <!-- <span class="product-detail-size">XL</span> -->
               </div>
               <!-- box size -->
               <input type="hidden" class="box-size-id">
@@ -177,13 +180,14 @@
               <span class="product_detail_choose_quantity">Chọn số lượng: <strong id="product_detail_quantity"></strong></span>
               <div class="product-detail-toCart-field">
                 <!-- box số lượng sản phẩm còn lại -->
+                <input type="hidden" disabled value="2" id="product_detail_contain_quantity">
                 <!-- end -->
                 <div class="product-detail-inc">
                   <i class="fa-solid fa-minus product-detail-inc-minus" id="product-detail-inc-minus"></i>
                   <input type="number" disabled value="1" id="product-detail-inc-quantity" class="product-detail-inc-quantity" />
                   <i class="fa-solid fa-plus product-detail-inc-plus" id="product-detail-inc-plus " class="cartModal-inc-plus"></i>
                 </div>
-                <button type="button"  class="product-detail-toCart">Mua Ngay</button>
+                <button type="button" id="addToCart" class="product-detail-toCart">Mua Ngay</button>
                 <i class="fa-regular fa-heart product-detail-favorite"></i>
               </div>
               <span id="quantity_product"></span>
@@ -218,9 +222,8 @@
                   </div>
                 </div>
             </div>
-          
           </div>
-          <!-- <h2>Bình Luận</h2>
+          <h2>Bình Luận</h2>
           <div class="product-content col-2" style="width: 100%; height: 320px; overflow-y: auto;">
             <div class="box-content2  binhluan" style="width: 50%; font-size: 16px;">
               <?php
@@ -282,7 +285,7 @@
               <?php }
               ?>
             </div>
-          </div> -->
+          </div>
 
           <div class="product-suggest">
             <h3 class="product-suggest-title" style="color: red;">

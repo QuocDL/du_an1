@@ -1,5 +1,5 @@
 
-    <div class="filter-sidebar">
+<div class="filter-sidebar">
         <div class="filter-block">
           <div class="filter-category active">
             <ul>
@@ -9,40 +9,18 @@
           </div>
           <div class="filter-list">
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
               <a href="male-fashion">Nam</a>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manPants" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manPants"></label>
               <a href="female-fashion">Nữ</a>
             </li>
           </div>
         </div>
-        <div class="filter-block">
-          <div class="filter-category">
-            <ul>
-              NHÓM SẢN PHẨM
-            </ul>
-            <i class="fa-solid fa-chevron-down filter-dropdown"></i>
-          </div>
-          <div class="filter-list">
-            <li class="filter-category-name">
-              <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
-              </label>
-              <a href="ao_new">Áo</a>
-            </li>
-            <li class="filter-category-name">
-              <label class="filter-newCheckbox" for="filter-checkbox-manPants"></label>
-              <a href="quan_new">Quần</a>
-            </li>
-            <li class="filter-category-name">
-              <label class="filter-newCheckbox" for="filter-checkbox-manPants"></label>
-              <a href="vay_new">Váy</a>
-            </li>
-          </div>
-        </div>
-    
         <div class="filter-block">
           <div class="filter-category">
             <ul>
@@ -60,7 +38,7 @@
               echo '<span class="filter-list-size" data-size-id="' . $size['size_id'] . '">' . $size['size_name'] . '</span>';
             }
             ?>
-            <div class="filter_type_size" filter_type_size="" product_status="1">
+            <div class="filter_type_size" filter_type_size="" product_status="">
                 
             </div>
           </div>
@@ -86,63 +64,73 @@
               </li>
             <?php } ?> -->
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=1">Đen</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=1">Đen</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/black.png')"></div>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=2">Trắng</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=2">Trắng</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/white.png')"></div>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=3">Be</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=3">Be</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/be.png')"></div>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=4">Xám/Bạc</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=4">Xám/Bạc</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/xam_bac.png')"></div>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=5">Xanh Da Trời</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=5">Xanh Da Trời</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/xanh_da_tr_i.png')"></div>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=6">Xanh Navy</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=6">Xanh Navy</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/xanh_navy.png')"></div>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=7">Xanh lá</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=7">Xanh lá</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/xanh_l_.png')"></div>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=8">Xanh Olive</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=8">Xanh Olive</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/xanh_olive.png')"></div>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=9">Nâu</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=9">Nâu</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/nau.png')"></div>
             </li>
             <li class="filter-category-name">
+              <input type="checkbox" name="" id="filter-checkbox-manShirt" class="filter-checkbox" />
               <label class="filter-newCheckbox" for="filter-checkbox-manShirt">
               </label>
-              <a href="../du_an1/index.php?action=color_filter_new&color_type_id=10">Đỏ</a>
+              <a href="../du_an1/index.php?action=color_filter&color_type_id=10">Đỏ</a>
               <div class="filter-list-color" style="background-image: url('../<?= $ROOT_URL ?>/asset/images/do.png')"></div>
             </li>
           </div>
@@ -155,7 +143,7 @@
             <i class="fa-solid fa-chevron-down filter-dropdown"></i>
           </div>
           <div class="filter-list">
-            <div class="filter_type" filter_type="" product_status ="1">
+            <div class="filter_type" filter_type="" product_status ="">
             </div>
             <div id="multi-range-slider" class="filter-price"></div>
             <div class="filter-price-control">

@@ -36,7 +36,7 @@
 
     <div class="main-colums">
       <!-- block filter -->
-      <?php require ".$INCLUDES_URL/filter_product_male.php"?>
+      <?php require ".$INCLUDES_URL/filter_product_nam.php"?>
       <div class="product-colum">
         <div class="product-row row-col-4">
           <?php

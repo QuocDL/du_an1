@@ -89,6 +89,8 @@
 <!-- end -->
 <!-- Start Cart -->
 <?php require "./includes/cart_modal.php" ?>
+<?php require ".$INCLUDES_URL/delete_cart_confirm.php" ?>
+
 <!-- sign in -->
 
 <!-- Nav -->
@@ -100,7 +102,7 @@
 <div class="wrapper">
   <ul class="breadcrumbs">
     <li>Trang chủ /</li>
-    <li>Ưu Đãi / Ưu Đãi Đồng Giá</li>
+    <li>Thời trang nữ</li>
   </ul>
 
   <main id="main-content">
@@ -108,25 +110,19 @@
       <img src="../../du_an1/asset/images/1920x450_banner_cate_outlet_t823_1_.png" alt="" class="main-banner-img" />
     </div>
 
-    <h3 class="category-title">ƯU ĐÃI ĐỒNG GIÁ</h3>
+    <h3 class="category-title">ƯU ĐÃI ĐỒNG GIÁ</h3> 
 
     <div class="functions">
       <div class="filter-function">
         Bộ lọc
         <i class="fa-solid fa-filter"></i>
       </div>
-      <?php
-      $product_status = 1; // Trạng thái 1
-      if ($product_status == 1) {
-        $totalProducts = count_allnews_products($product_status);
-      } else {
-        $totalProducts = count_allnews_products(2); // Sử dụng trạng thái mặc định là 2
-      }
-      ?>
+      <?php  // Lấy tổng số sản phẩm
+          $product_status = 2;
+          $totalProducts = count_allnews_products(2);?>
       <div class="view-function">
-        <strong><?php echo $totalProducts ?></strong> sản phẩm
+      <strong><?php echo $totalProducts?></strong> sản phẩm 
       </div>
-
       <div class="sort-function">
         Sắp xếp
         <form action="">
@@ -143,19 +139,29 @@
       <?php require "./includes/filter_product_sale.php" ?>
 
       <div class="product-colum">
-        <?php
-          $selectedSize = $_GET['size_id'];
-          $filter = filterProductsBySizeAll($selectedSize, 2);
-          ?>
-           <?php if(empty($filter))
-                echo' <div class="view-function" style="display: flex; justify-content: center;">không có sản phẩm nào</div>'
-          ?>
         <div class="product-row row-col-4">
-          <!-- start item -->
-          
-          <?php foreach ($filter as $key => $value) : ?>
+          <?php
+          $currentpage = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+          // $itemsPerPage là số sản phẩm hiển thị trên mỗi trang
+          $itemsPerPage = 8;
+
+          // Tính toán vị trí bắt đầu của sản phẩm trên trang hiện tại
+          $start = ($currentpage - 1) * $itemsPerPage;
+
+          // Lấy dữ liệu sản phẩm cho trang hiện tại
+
+          // Lấy tổng số sản phẩm
+          // $totalProducts = count_allnews_products(2);
+          // var_dump($totalProducts);
+
+          // Tính tổng số trang dựa trên tổng số sản phẩm và số sản phẩm trên mỗi trang
+          $totalPages = ceil($totalProducts / $itemsPerPage);
+          $product_result = isset($_GET['page']) ? selectAll_news_product_phantrang(false, $start, $itemsPerPage,2) : selectAll_product(true,2);
+          foreach ($product_result as $key => $value) : ?>
+            <!-- start item -->
             <div class="product-item">
-              <a href="./index.php?action=product_detail&product_id=<?= $value['product_id'] ?>" class="product-image-item">
+              <a href="./product_detail&product_id=<?= $value['product_id'] ?>" class="product-image-item">
                 <img src="../<?= $ROOT_URL ?><?= $value['main_image_url'] ?>" alt="" class="product-image" />
                 <img src="../<?= $ROOT_URL ?><?= $value['hover_main_image_url'] ?>" alt="" class="product-image-second" />
               </a>
@@ -166,6 +172,7 @@
                 <i class="fa-regular fa-heart product-icon"></i>
               </div>
               <div class="product-price">
+                <!-- format tiền tệ việt nam -->
                 <?php
                 $locale = 'vi_VN';
                 $currency = $value['product_price'];
@@ -177,15 +184,15 @@
                 <span class="product-newPrice"><?= $discount_price ?></span>
                 <span class="product-oldPrice"><?= $product_vn_price ?></span>
               </div>
-
               <span class="product-newProduct">
-                <?php if ($value['product_status'] == 1) { ?>
-                  <img src="../<?= $ROOT_URL ?>/asset/images/Label_New_Arrivals_14T7.png" alt="" />
-                <?php } elseif ($value['product_status'] == 2) { ?>
-                  <img src="../<?= $ROOT_URL ?>/asset/images/sale-sinh-nhat-routine-10-tuoi.png" alt="" />
-                <?php } ?>
+                <?php if ($value['product_status']==1) {?>
+                    <img src="../<?= $ROOT_URL ?>/asset/images/Label_New_Arrivals_14T7.png" alt="" />
+                <?php }elseif($value['product_status']==2){?>
+                    <img src="../<?= $ROOT_URL ?>/asset/images/sale-sinh-nhat-routine-10-tuoi.png" alt="" />
+                <?php }?> 
               </span>
               <span class="product-discount"> -<?= $value['discount']; ?>% </span>
+              <!-- Select color by product -->
               <?php $product_color_result = select_product_color($value['product_code']); ?>
               <div class="product-color-list">
                 <?php foreach ($product_color_result as $value) : ?>
@@ -195,16 +202,43 @@
                     </div>
                     <div class="product-color-hover">
                       <img src="../<?= $ROOT_URL ?><?= $value['color_image'] ?>" alt="" class="product-color-img-hover" />
-                      <span class="product-color-name"> <?= $value['color_name'] ?></span>
+                      <span class="product-color-name"> <?= $value['color_name'] ?> </span>
                     </div>
                   </div>
-
                 <?php endforeach ?>
               </div>
             </div>
             <!-- end item -->
           <?php endforeach ?>
         </div>
+        <ul class="home-pagination">
+          <li class="home-pagination-item" <?php echo ($currentpage == 1) ? 'home-pagination-disable' : ''; ?>>
+            <a href="?page=<?php echo 1; ?>" class="home-pagination-link" class="home-pagination-link">
+              <i class="fa-solid fa-angles-left home-pagination-icon"></i>
+            </a>
+          </li>
+          <li class="home-pagination-item <?php echo ($currentpage == 1) ? 'home-pagination-disable' : ''; ?>">
+            <a href="?page=<?php echo $currentpage - 1; ?>" class="home-pagination-link">
+              <i class="fa-solid fa-angle-left home-pagination-icon"></i>
+            </a>
+          </li>
+          <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+            <li class="home-pagination-item <?php echo ($i == $currentpage) ? 'home-pagination-active' : ''; ?>">
+              <a href="?page=<?php echo $i; ?>" class="home-pagination-link"><?php echo $i; ?></a>
+            </li>
+          <?php endfor; ?>
+          <li class="home-pagination-item <?php echo ($currentpage == $totalPages) ? 'home-pagination-disable' : ''; ?>">
+            <a href="?page=<?php echo $currentpage + 1; ?>" class="home-pagination-link">
+              <i class="fa-solid fa-angle-right home-pagination-icon"></i>
+            </a>
+          </li>
+          <li class="home-pagination-item <?php echo ($currentpage == $totalPages) ? 'home-pagination-disable' : ''; ?>">
+            <a href="?page=<?php echo $totalPages - 1; ?>" class="home-pagination-link">
+              <i class="fa-solid fa-angles-right home-pagination-icon"></i>
+            </a>
+          </li>
+        </ul>
+
       </div>
     </div>
   </main>
@@ -214,10 +248,10 @@
       GỢI Ý CHO BẠN: CÁC SẢN PHẨM ĐƯỢC QUAN TÂM NHẤT
     </h3>
     <div class="my-slickSilder">
-      <?php $product_result = select_home_product(true, 1); ?>
+      <?php $product_result = selectAll_product(true, 2); ?>
       <?php foreach ($product_result as $key => $value) : ?>
         <!-- start item -->
-        <div class="product-item">
+        <div class="product-item" id="product-list">
           <a href="./index.php?action=product_detail&product_id=<?= $value['product_id'] ?>" class="product-image-item">
             <img src="../<?= $ROOT_URL ?><?= $value['main_image_url'] ?>" alt="" class="product-image" />
           </a>
@@ -225,7 +259,6 @@
             <a href="./index.php?action=product_detail&product_id=<?= $value['product_id'] ?>" class="product-name">
               <?= $value['product_name'] ?>
             </a>
-            <i class="fa-regular fa-heart product-icon"></i>
           </div>
           <div class="product-price">
             <?php
@@ -240,22 +273,40 @@
             <span class="product-oldPrice"><?= $product_vn_price ?></span>
             <span class="product-discount"> -<?= $value['discount']; ?>% </span>
           </div>
-
-          <span class="product-newProduct">
-            <img src="../<?= $ROOT_URL ?>/asset/images/newProduct.png" alt="" />
-          </span>
           <?php $product_color_result = select_product_color($value['product_code']); ?>
+
           <div class="product-color-list">
             <?php foreach ($product_color_result as $value) : ?>
-              <div class="product-color">
+              <a href="#" class="product-color">
                 <div class="product-color-child">
                   <img src="../<?= $ROOT_URL ?><?= $value['color_image'] ?>" alt="" class="product-color-img" />
                 </div>
-              </div>
+              </a>
             <?php endforeach ?>
           </div>
         </div>
       <?php endforeach ?>
     </div>
   </div>
-  <?php require "./includes/footer.php"; ?>
+</div>
+<!-- <script>
+        $(document).ready(function() {
+            // Lắng nghe sự kiện khi giá trị slider thay đổi
+            $("#multi-range-slider").on("change", function() {
+                var startValue = $("#start-value").text();
+                var endValue = $("#end-value").text();
+
+                // Gửi dữ liệu lọc qua AJAX
+                $.ajax({
+                    url: "filter_products.php", // Điều chỉnh đúng đường dẫn của tệp xử lý
+                    type: "POST",
+                    data: { startValue: startValue, endValue: endValue },
+                    success: function(response) {
+                        // Cập nhật danh sách sản phẩm sau khi lọc
+                        $("#product-list").html(response);
+                    }
+                });
+            });
+        });
+    </script> -->
+<?php require "./includes/footer.php" ?>

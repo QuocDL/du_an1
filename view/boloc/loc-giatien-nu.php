@@ -115,8 +115,10 @@
         <i class="fa-solid fa-filter"></i>
       </div>
       <div class="view-function">
-        <strong>363</strong>
-        Sản phẩm
+          <?php $min = $_GET['start'];
+          $max = $_GET['end'];
+          ?>
+        Lọc giá từ <?php echo $min."đ"?> đến <?php echo $max."đ"?>
       </div>
       <div class="sort-function">
         Sắp xếp
@@ -134,9 +136,7 @@
       <div class="product-colum">
         <div class="product-row row-col-4">
           <!-- start item -->
-          <?php $min = $_GET['start'];
-          $max = $_GET['end'];
-          ?>
+        
           <?php $filter = price_bo_loc($min, $max, 1) ?>
 
           <?php foreach ($filter as $key => $value) : ?>

@@ -1,4 +1,5 @@
 <?php require "./includes/header.php" ?>
+
 <div id="register-modal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
@@ -116,8 +117,7 @@
             <i class="fa-solid fa-filter"></i>
           </div>
           <div class="view-function">
-            <strong>363</strong>
-            Sản phẩm
+            Sản phẩm lọc theo size
           </div>
           <div class="sort-function">
             Sắp xếp
@@ -135,12 +135,15 @@
           <?php require "./includes/filter_product_nam.php" ?>  
           
           <div class="product-colum">
-            <div class="product-row row-col-4">
-              <!-- start item -->
-           <?php 
+             <?php 
                 $selectedSize = $_GET['size_id'];
                 $filter = filterProductsBySize($selectedSize,0); 
            ?> 
+           <?php if(empty($filter))
+                echo' <div class="view-function" style="display: flex; justify-content: center;">không có sản phẩm nào</div>'
+          ?>
+            <div class="product-row row-col-4">
+              <!-- start item -->
           <?php foreach ($filter as $key => $value) : ?>
               <div class="product-item">
                 <a href="./index.php?action=product_detail&product_id=<?= $value['product_id'] ?>" class="product-image-item">
