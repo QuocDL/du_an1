@@ -102,6 +102,7 @@
             $receiver_email = $_SESSION['anonymous_customer']['receiver_email'];
             $receiver_number_phone = $_SESSION['anonymous_customer']['receiver_number_phone'];
             $order_result = select_all_order_product_by_email_and_phone_number($receiver_email, $receiver_number_phone);
+            echo $order_result
             ?>
             <?php if (!empty($order_result)) : ?>
                 <div class="show_orders">

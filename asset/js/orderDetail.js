@@ -103,6 +103,7 @@ $(document).ready(function () {
           $("#startPayment").click();
         } else {
           alert("Đặt hàng thành công, đang xử lý đơn hàng");
+          console.log(responve)
           setTimeout(() => {
             location.href = `/du_an1/order_details_infomation`;
           }, 1);
