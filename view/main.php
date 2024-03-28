@@ -200,7 +200,9 @@
             <div class="form-group">
               <label for="password">Mật khẩu:</label>
               <input type="password" id="password3" name="password" required />
-              <a href=""><span class="quenmk">Quên mật khẩu?</span></a>
+              <ul id="quenpass">
+                <li class="quenmk">Quên mật khẩu?</span>
+              </ul>
             </div>
             <br />
             <button type="submit" class="buttonregister" name="login" id="submit-btn">
