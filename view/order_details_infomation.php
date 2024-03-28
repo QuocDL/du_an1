@@ -283,8 +283,6 @@
                                     <span class="payment_methods">Phương thức thanh toán: <span class="payment_method">
                                             <?php if ($value['pay_methods'] == 1) {
                                                 echo "Thanh toán khi nhận hàng";
-                                            } else if ($value['pay_methods'] == 2) {
-                                                echo "Thanh toán Bằng cách chuyển khoản";
                                             } else {
                                                 echo "Thanh toán MOMO";
                                             }
