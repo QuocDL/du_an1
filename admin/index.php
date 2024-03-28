@@ -1,3 +1,4 @@
+<!-- LEADER CHHECK CODE -->
 <?php
 session_start();
 require "../global.php";
