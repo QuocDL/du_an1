@@ -1,3 +1,4 @@
+<!-- Check code -->
 <?php
 session_start();
 require "../global.php";
