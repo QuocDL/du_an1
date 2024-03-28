@@ -63,6 +63,9 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['role'] == 1)) {
             $listtaikhoan = loadall_taikhoan();
             include "./user/list.php";
             break;
+            case 'check-phantrang':
+                require "./admin/check-phantrang.php";
+                break;
         
         default:
             echo "Không có gì ";
@@ -70,5 +73,5 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['role'] == 1)) {
             break;
     }
 } else {
-    require "..$VIEW_URL/404not.php";
+    require "./404not.php";
 }
