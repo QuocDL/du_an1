@@ -53,8 +53,9 @@ $(document).ready(function () {
   //   }
   // });
   $("#submitColorAndSize").on("click", function () {
-    let fileInput = $("#product_color_image")[0];
     let formData = new FormData();
+    let fileInput = $("#product_color_image")[0];
+
     let colorType = $("#add_color_type");
     let colorName = $("#color_name");
     let colorNameId = $("#color_name_duplicate_list");
@@ -71,7 +72,7 @@ $(document).ready(function () {
     let sizeId = $("#add_size");
     let sizeName = sizeId.find(":selected").text();
     let currentQuantity = 0;
-
+    console.log(fileInput);
     formData.append("colorImage", fileInput.files[0]);
     formData.append("colorType", colorType.val());
     if (colorName.val() === "") {
