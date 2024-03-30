@@ -63,7 +63,7 @@
                         <td><?= $value['created_at'] ?></td>
                         <td><span class="status_name" status="<?= $value['status_id'] ?>" style="font-weight: 500;color:<?= $value['status_id'] == 1 || $value['status_id'] == 6 ? "#e03033" : "#26820b"; ?>"><?= $status_result['status'] ?></span></td>
                         <td>
-                            <a href="/du_an1/admin/index.php?act=detail_bill&order_id=<?= $value['order_id'] ?>" style="display: block;text-decoration: none;">
+                            <a href="/du_an1/admin/detail_bill&order_id=<?= $value['order_id'] ?>" style="display: block;text-decoration: none;">
                                 <i class="fa-solid fa-circle-info" style="color: #4287ff;font-size: 1.8rem;cursor: pointer;text-align: center;display: block;padding: 6px;"></i>
                             </a>
                         </td>
