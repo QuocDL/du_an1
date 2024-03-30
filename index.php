@@ -134,12 +134,12 @@ switch ($action) {
     session_unset();
     header('Location: index.php');
     break;
-  // case 'timkiem':
-  //   if (isset($_POST['timkiem'])) {
-  //     $tukhoa = $_POST['tukhoa'];
-  //   }
-  //   require ".$VIEW_URL/timkiem.php";
-  //   break;
+  case 'timkiem':
+    if (isset($_POST['timkiem'])) {
+      $tukhoa = $_POST['tukhoa'];
+    }
+    require ".$VIEW_URL/timkiem.php";
+    break;
 
 
 
