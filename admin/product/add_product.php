@@ -106,7 +106,7 @@
             </div>
             <div class="form-group mb-3 error">
                 <label for="product_color_image">Ảnh Màu</label>
-                <input type="file" class="form-control" name="color_image" id="color_image" onchange="xulyfile_anhmau()">
+                <input type="file" class="form-control" name="color_image" id="product_color_image" onchange="xulyfile_anhmau()">
                 <small></small>
             </div>
             <div class="form-group mb-3">
