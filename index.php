@@ -14,10 +14,16 @@ require ".$MODEL_URL/orders.php";
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 // echo $action;
 switch ($action) {
+  case 'test': 
+    require ".$VIEW_URL/test.php";
+    break;
   case 'index';
   // echo $action;
     require ".$VIEW_URL/main.php";
     break;
+  case 'orders': 
+    require ".$VIEW_URL/orders_history.php";
+  break;
     // ----------San Pham---------------
   case 'male-fashion':
     require ".$VIEW_URL/male-fashion.php";
@@ -34,10 +40,10 @@ switch ($action) {
    case 'sale-fashion':
     require ".$VIEW_URL/sale-fashion.php";
     break;
-
-
-
   // Bổ sung product DETAIL và chức năng add vào cart
+  case "order_purchased": 
+    require ".$VIEW_URL/orders.php";
+    break;
   case 'check-quanity':
     require ".$CONTROLLER_URL/check_product_quantity.php";
     break;
@@ -292,6 +298,7 @@ switch ($action) {
   case 'receive':
     require ".$CONTROLLER_URL/receive.php";
     break;
+
   default:
     echo 'Đang làm thêm trang 404';
     break;

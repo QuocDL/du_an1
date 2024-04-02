@@ -181,3 +181,27 @@ function sum_product_order($product_id)
 }
 
 
+
+
+// history ORDERS
+
+function select_order_purchased()
+{   
+    $sql = "SELECT purchased_orders.*, products.* FROM purchased_orders
+    JOIN products ON products.product_id = purchased_orders.product_id
+    WHERE 1
+    " 
+    ;
+    return pdo_query($sql);
+}
+
+/*
+function doi_chieu($email, $phone_number)
+{
+    $sql = "SELECT orders.*,order_product.*,products.* FROM orders 
+    JOIN order_product ON orders.order_id = order_product.order_id 
+    JOIN products ON products.product_id = order_product.product_id 
+    WHERE orders.receiver_email = ? AND orders.receiver_number_phone = ?";
+    return pdo_query($sql, $email, $phone_number);
+}
+*/
