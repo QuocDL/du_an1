@@ -185,14 +185,13 @@ function sum_product_order($product_id)
 
 // history ORDERS
 
-function select_order_purchased()
+function select_order_purchased($customer_email, $customer_phone_number)
 {   
     $sql = "SELECT purchased_orders.*, products.* FROM purchased_orders
     JOIN products ON products.product_id = purchased_orders.product_id
-    WHERE 1
-    " 
+    WHERE purchased_orders.customer_email = ? AND purchased_orders.customer_phone_number = ?";
     ;
-    return pdo_query($sql);
+    return pdo_query($sql, $customer_email, $customer_phone_number);
 }
 
 /*
