@@ -21,7 +21,7 @@ switch ($action) {
   // echo $action;
     require ".$VIEW_URL/main.php";
     break;
-  case 'orders': 
+  case 'orders_history': 
     require ".$VIEW_URL/orders_history.php";
   break;
     // ----------San Pham---------------

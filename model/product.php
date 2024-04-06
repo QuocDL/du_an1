@@ -151,7 +151,7 @@ function add_image($product_image, $tmp_image, $folder_root)
         $file_name = uniqid() . $product_image['name'];
         if (move_uploaded_file($tmp_image, $folder_name . $file_name)) {
             $folder_name = "$folder_root/images/";
-            $save_img = $folder_name . $file_name;
+            $save_img = $folder_name . $file_name; 
         };
         return $save_img;
     } else {

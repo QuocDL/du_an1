@@ -39,29 +39,8 @@
         <span class="<?= isset($_COOKIE['notification']) ? "noti-success" : "" ?> "><?= $notification = isset($_COOKIE['notification']) ? $_COOKIE['notification'] : ""; ?></span>
         <div id="showProduct">
             <?php $product_result = select_all_product_admin(); ?>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>Tên sản phẩm</th>
-                        <th>Mã sản phẩm</th>
-                        <th>Thêm mới</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $product_id = $_GET['product_id']; ?>
-                    <?php foreach ($product_result as $value) : ?>
-                        <tr>
-                            <td><?= $value['product_name'] ?></td>
-                            <td><?= $value['product_code'] ?></td>
-                            <td>
-                                <a href="./index.php?act=add_image&product_id=<?= $value['product_id'] ?>">
-                                    <button type="button" class="btn btn-success">Thêm ảnh</button>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+            <?php $product_id = $_GET['product_id']; ?>
+            
             <div id="show_detail_image">
                 <!-- style="display: flex;justify-content: space-between;gap: 16px;flex-wrap: wrap;" -->
                 <?php

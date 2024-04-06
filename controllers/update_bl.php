@@ -1,8 +1,8 @@
 <?php
-    include "../../model/pdo.php";
-    include "../../model/product.php";
-    include "../../model/comment.php";
-    include "../../model/taikhoan.php";
+    include "../model/pdo.php";
+    include "../model/product.php";
+    include "../model/comment.php";
+    include "../model/taikhoan.php";
   
     $product_id = $_POST['product_id'];
     $comment_id = $_POST['comment_id'];

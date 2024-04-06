@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-group mb-3 error">
                     <label for="banner_image">Ảnh chính</label>
-                    <input type="file" class="form-control" name="banner_image" id='banner_image' multiple onchange="xulyfile()">
+                    <input type="file" class="form-control" name="banner_image" id='banner_image'  onchange="xulyfile()">
                     <small></small>
                 </div>
                 <div class="mt-3">

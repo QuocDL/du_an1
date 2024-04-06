@@ -249,11 +249,10 @@
                       <a href="../du_an1/index.php?action=delete_bl&product_id=<?= $product_id ?>&comment_id=<?= $comment_id ?>">Delete</a>
                     <?php } ?>
                     <?php if (isset($_GET['comment_manager']) && $_GET['comment_manager'] == 'update_bl' && $_GET['comment_id'] == $comment_id) : ?>
-                      <form action="../../du_an1/controllers/update_bl.php" method="post" class="update_comment">
+                      <form action="./du_an1/controllers/update_bl.php" method="post" class="update_comment">
                         <input type="hidden" value="<?= $_GET['comment_id'] ?>" name="comment_id">
                         <input type="hidden" value="<?= $product_id ?>" name="product_id">
                         <textarea id="" cols="10" name="comment_content" rows="4" placeholder="Viết gì đó...."></textarea>
-                        <button class="btn_sua">Sửa</button>
                       </form>
                     <?php endif ?>
                   </div>

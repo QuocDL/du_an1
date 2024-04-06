@@ -90,7 +90,7 @@
 <?php require ".$INCLUDES_URL/header_nav.php" ?>
 <ul class="breadcrumbs">
     <li>Trang chủ /</li>
-    <li>Chi tiết đơn hàng</li>
+    <li>Lịch sử đơn hàng</li>
 </ul>
 <?php if (!empty($_SESSION['anonymous_customer'])) : ?>
     <?php //var_dump($_SESSION['anonymous_customer']); 
@@ -101,8 +101,7 @@
             <?php
             $receiver_email = $_SESSION['anonymous_customer']['receiver_email'];
             $receiver_number_phone = $_SESSION['anonymous_customer']['receiver_number_phone'];
-            $order_result = select_all_order_product_by_email_and_phone_number($receiver_email, $receiver_number_phone);
-            echo $order_result
+            $order_result = select_order_purchased($receiver_email, $receiver_number_phone);
             ?>
             <?php if (!empty($order_result)) : ?>
                 <div class="show_orders">
@@ -196,7 +195,7 @@
                 </div>
             <?php else : ?>
                 <div class="empty_product__notifi">
-                    Bạn chưa có đơn hàng nào
+                    Bạn chưa từng mua hàng
                 </div>
             <?php endif ?>
         </div>
@@ -312,8 +311,7 @@
                 </div>
             <?php else : ?>
                 <div class="empty_product__notifi">
-                Bạn chưa có đơn hàng nào
-
+                    Bạn chưa từng mua hàng
                 </div>
             <?php endif ?>
         </div>
