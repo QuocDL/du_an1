@@ -517,3 +517,22 @@ background-color: #fff;
     border-color: transparent var(--discount-color) transparent transparent;
 }
 
+.filter_nav_order{
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filter_order_item{
+    font-size: 2rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+    padding-bottom: 5px;
+    transition: all 300ms ease-in-out;
+    font-weight: 700;
+}
+.filter_order_item:hover{
+    font-size: 2rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 1);
+
+    font-weight: 700;
+}

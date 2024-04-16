@@ -1844,6 +1844,7 @@ span.quenmk a {
 .show_orders {
   display: flex;
   padding: 12px 24px;
+  align-items: center;
 }
 .orders_product {
   flex-basis: 45%;

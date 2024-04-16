@@ -89,6 +89,14 @@ function select_all_order_product_by_email_and_phone_number($email, $phone_numbe
     WHERE orders.receiver_email = ? AND orders.receiver_number_phone = ?";
     return pdo_query($sql, $email, $phone_number);
 }
+function select_all_order_product_by_email_and_phone_number_status($email, $phone_number, $status)
+{
+    $sql = "SELECT orders.*,order_product.*,products.* FROM orders 
+    JOIN order_product ON orders.order_id = order_product.order_id 
+    JOIN products ON products.product_id = order_product.product_id 
+    WHERE orders.receiver_email = ? AND orders.receiver_number_phone = ? AND orders.status_id = ?";
+    return pdo_query($sql, $email, $phone_number,  $status);
+}
 function count_email_and_phone_number($email, $phone_number)
 {
     $sql = "SELECT COUNT(*) FROM orders WHERE receiver_email = ? AND receiver_number_phone = ?";
@@ -185,14 +193,6 @@ function sum_product_order($product_id)
 
 // history ORDERS
 
-function select_order_purchased($customer_email, $customer_phone_number)
-{   
-    $sql = "SELECT purchased_orders.*, products.* FROM purchased_orders
-    JOIN products ON products.product_id = purchased_orders.product_id
-    WHERE purchased_orders.customer_email = ? AND purchased_orders.customer_phone_number = ?";
-    ;
-    return pdo_query($sql, $customer_email, $customer_phone_number);
-}
 
 /*
 function doi_chieu($email, $phone_number)

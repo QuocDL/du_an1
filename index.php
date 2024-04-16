@@ -284,7 +284,7 @@ switch ($action) {
     require ".$CONTROLLER_URL/get_product_info.php";
     break;
   case 'order_details_infomation':
-    require ".$VIEW_URL/order_details_infomation.php";
+    require ".$VIEW_URL/order_details_infomation_load.php";
     break;
   case 'get_anomyous_customer_info':
     require ".$CONTROLLER_URL/get_anomyous_customer_info.php";

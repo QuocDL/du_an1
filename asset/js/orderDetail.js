@@ -104,7 +104,7 @@ $(document).ready(function () {
         } else {
           alert("Đặt hàng thành công, đang xử lý đơn hàng");
           setTimeout(() => {
-            location.href = `/du_an1/order_details_infomation`;
+            location.href = `/du_an1/order_details_infomation?id=1`;
           }, 1);
         }
       },
@@ -117,6 +117,8 @@ $(document).ready(function () {
     const that = this;
     let ischeck = confirm("Bạn có muốn hủy đơn hàng ?");
     let orderId = $(that).attr("order_id");
+    let statusId = $(that).attr("status_id");
+
     // console.log(orderId);
     if (ischeck) {
       $.ajax({
@@ -124,6 +126,7 @@ $(document).ready(function () {
         url: "../../du_an1/index.php?action=cancel_order",
         data: {
           orderId: orderId,
+          statusId: statusId
         },
         success: function (responve) {
           console.log(responve);
@@ -132,6 +135,7 @@ $(document).ready(function () {
           } else {
             console.log(responve);
             console.log("Hủy đơn hàng thành công");
+            location.reload()
           }
           // location.reload();
         },
@@ -147,6 +151,8 @@ $(document).ready(function () {
       "Bạn xác nhận đã nhận được hàng ?,sau khi xác nhận không thể hoàn trả lại."
     );
     let orderId = $(that).attr("order_id");
+    let statusId = $(that).attr("status_id");
+
     // console.log(orderId);
     if (ischeck) {
       $.ajax({
@@ -154,11 +160,12 @@ $(document).ready(function () {
         url: "../../du_an1/index.php?action=receive",
         data: {
           orderId: orderId,
+          orderStatus : statusId
         },
         success: function (responve) {
           // console.log(responve);
+          location.href= './order_details_infomation?id=4'
           console.log("Xác nhận đơn hàng thành công");
-          location.reload();
         },
         error: function (error) {
           console.log(error);

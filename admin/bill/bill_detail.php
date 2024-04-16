@@ -83,16 +83,21 @@
                     Tổng tiền đơn hàng: <strong><?= formatMoney($order_detail_result['total_price']); ?></strong>
                 </div>
             </div>
-            <div class="order_status">
+            <?php if($order_detail_result['status_id'] != 4):?>
+                <div class="order_status">
                 <?php $status_result = select_all_status(); ?>
                 <label for="order_status">Trạng thái:</label><br>
                 <select id="order_status" style="cursor: pointer;">
-                    <?php foreach ($status_result as $key => $status) : ?>
-                        <option value="<?= $status['status_id'] ?>"><?= $status['status'] ?></option>
-                    <?php endforeach ?>
+                        <option value="1">Chờ xử lý</option>
+                        <option value="2">Đã được xử lý</option>
+                        <option value="3">Đang giao hàng</option>
+                        <option value="4">Đã giao hàng</option>
                 </select><br>
                 <button type="button" id="status_update" order_id="<?= $order_id ?>" class="btn btn-primary my-3">Cập nhật trạng thái</button>
             </div>
+            <?php else : ?>
+                <a href="./index.php?act=view_bill" class="btn btn-primary my-3">Quay về danh sách</a>
+            <?php endif ?>
         </div>
     </div>
 </div>

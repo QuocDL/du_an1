@@ -116,7 +116,7 @@
                 <?php
                 $order_id = isset($_COOKIE['order_details_infomation']) ? $_COOKIE['order_details_infomation'] : null;
                 ?>
-                <a href="/du_an1/order_details_infomation">Thông tin đơn hàng</a>
+                <a href="/du_an1/order_details_infomation?id=1">Thông tin đơn hàng</a>
                 <a href="">Khách hàng thành viên</a>
                 <a href="">Danh sách cửa hàng</a>
               </div>
