@@ -110,6 +110,8 @@
 
 
         <?php require './includes/login_modal.php'?>
+        <?php require './includes/register_modal.php'?>
+        <?php require './includes/forgot_pass.php'?>
       <!-- Nav -->
       <div></div>
       <!-- Nav -->
