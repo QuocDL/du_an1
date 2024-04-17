@@ -1,6 +1,7 @@
 <?php require "./includes/header.php" ?>
 <?php require "./includes/header_nav.php" ?>
 <?php require './includes/login_modal.php'?>
+<?php require './includes/register_modal.php'?>
 <div class="wrapper">
   <ul class="breadcrumbs">
     <li>Trang chủ /</li>
