@@ -43,10 +43,10 @@
         <?php
 
                     $doanhthu = doanhthu_thang();
-foreach ($doanhthu as $key) {
-    $thang[]= $key['thang'];
-    $doanhthuthang[]=$key['doanhthuthang'];
-}
+        foreach ($doanhthu as $key) {
+            $thang[]= $key['thang'];
+            $doanhthuthang[]=$key['doanhthuthang'];
+        }
                 
         
         ?>

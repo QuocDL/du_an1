@@ -108,6 +108,13 @@ function select_orders_by_email_and_phone_number($email, $phone_number)
     WHERE orders.receiver_email = ? AND orders.receiver_number_phone = ?";
     return pdo_query($sql, $email, $phone_number);
 }
+function select_orders_by_email_and_phone_number_status($email, $phone_number, $status)
+{
+    $sql = "SELECT * FROM orders 
+    WHERE orders.receiver_email = ? AND orders.receiver_number_phone = ? AND orders.status_id = ?";
+    return pdo_query($sql, $email, $phone_number, $status);
+}
+
 function select_email_and_number_phone($email, $phone_number)
 {
     $sql = "SELECT * FROM orders 
@@ -172,12 +179,21 @@ function total(){
 }
 
 function doanhthu_ngay(){
-    $sql='SELECT SUBSTR(created_at, 6, 2) as thang,SUBSTR(created_at, 9, 2) as ngay,total_price,order_id,sum(total_price) as doanhthungay FROM `orders` group by SUBSTR(created_at, 9, 2)';
+    $sql='SELECT SUBSTR(created_at, 6, 2) 
+    as thang,SUBSTR(created_at, 9, 2) 
+    as ngay,total_price,purchased_order_id,sum(total_price) 
+    as doanhthungay 
+    FROM `purchased_orders` 
+    group by SUBSTR(created_at, 9, 2)';
     return pdo_query($sql);
 }
 
 function doanhthu_thang(){
-    $sql='SELECT SUBSTR(created_at, 6, 2) as thang,SUBSTR(created_at, 9, 2) as ngay,total_price,order_id,sum(total_price) as doanhthuthang FROM `orders` group by SUBSTR(created_at, 6, 2)';
+    $sql='SELECT SUBSTR(created_at, 6, 2) as thang,SUBSTR(created_at, 9, 2) 
+    as ngay,total_price,purchased_order_id,sum(total_price) 
+    as doanhthuthang 
+    FROM `purchased_orders` 
+    group by SUBSTR(created_at, 6, 2)';
     return pdo_query($sql);
 }
 

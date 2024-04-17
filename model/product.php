@@ -356,7 +356,7 @@ function select_quantity_by_size($size_id, $color_name_id, $product_id)
     $sql = "SELECT quantities.* FROM products JOIN quantities 
     ON products.product_id = quantities.product_id 
     WHERE quantities.size_id = ? AND quantities.color_name_id = ?
-    AND quantities.product_id = ? ";
+    AND quantities.product_id = ?";
     return pdo_query_one($sql, $size_id, $color_name_id, $product_id);
 }
 function select_quantity_by_product_id_color_name_id_and_size_id($size_id, $color_name_id, $product_id)

@@ -88,8 +88,10 @@
                 <?php $status_result = select_all_status(); ?>
                 <label for="order_status">Trạng thái:</label><br>
                 <select id="order_status" style="cursor: pointer;">
-                        <option value="1">Chờ xử lý</option>
-                        <option value="2">Đã được xử lý</option>
+                        <?php if($order_detail_result['status_id'] != 3) :?>
+                            <option value="1">Chờ xử lý</option>
+                            <option value="2">Đã được xử lý</option>
+                        <?php endif ?>
                         <option value="3">Đang giao hàng</option>
                         <option value="4">Đã giao hàng</option>
                 </select><br>

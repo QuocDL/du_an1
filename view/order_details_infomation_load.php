@@ -101,7 +101,7 @@
             $receiver_email = $_SESSION['username']['email'];
             $receiver_number_phone = $_SESSION['username']['phone'];
             $statusid = $_GET['id'];
-            $order_result = select_all_order_product_by_email_and_phone_number_status($receiver_email, $receiver_number_phone, $statusid);
+            $order_result_by_id = select_orders_by_email_and_phone_number_status($receiver_email, $receiver_number_phone, $statusid);
             ?>
             <?php if($statusid == 1):?>
                 <h3>ĐƠN HÀNG ĐANG CHỜ XỬ LÝ</h3>
@@ -114,46 +114,12 @@
             <?php elseif($statusid == 5): ?>
                 <h3>ĐƠN HÀNG ĐÃ BỊ HỦY</h3>
             <?php endif ?>
-            <?php if (!empty($order_result)) : ?>
-                    <?php foreach ($order_result as $key => $value): ?>
-                       <?php $status_id = $value['status_id'] ?>
-                    <?php endforeach ?>             
-                        <div class="orders_product">
-                        <?php foreach ($order_result as $key => $value) : ?>
-                                <?php $color_result = select_color_name_by_id($value['color_name_id']); 
-                                $quantity_result = select_quantity_order_product($value['order_id']);
-                            ?>
-                            <div class="" style="display: flex; justify-content: space-between">
-                                <a href="/du_an1/product_detail&product_id=<?= $value['product_id'] ?>" class="favoriteProduct-img">
-                                    <div class="favoriteProduct-img-first" style="width: 104px;">
-                                        <img src="..<?= $ROOT_URL . $color_result['color_image'] ?>" alt="" />
-                                    </div>
-                                </a>
-                                <div class="favoriteProduct-details" style="width: 100%;">
-                                    <a href="/du_an1/product_detail&product_id=<?= $value['product_id'] ?>" class="favoriteProduct-link"><?= $value['product_name'] ?></a>
-                                    <div class="favoriteProduct-option">
-                                        <div class="favoriteProduct-choose">
-                                            <div class="favoriteProduct-choose-color cart">
-                                                MÀU:
-                                                <span>
-                                                    <?= $color_result['color_name'] ?>
-                                                </span>
-                                            </div>
-                                            <div class="favoriteProduct-choose-size">
-                                                SIZE:
-                                                <?php $get_size = select_size_by_id($value['size_id']); ?>
-                                                <span><?= $get_size['size_name'] ?></span>
-                                            </div>
-                                        </div>
-                                        <div class="order_detail_quantity">
-                                            <span style="margin-right:4px">Số lượng</span>
-                                            <strong><?= $value['quantity'] ?></strong>
-                                        </div>
-                                    </div>
-                                    <a href="/du_an1/product_detail&product_id=<?= $value['product_id'] ?>" class="btn_view_product">
-                                        <button type="button" class="view_product">Xem Sản Phẩm</button>
-                                    </a>
-                                </div>
+           <?php if(!empty($order_result_by_id)) : ?>
+            <div class="orders_detail">
+                        <div class="bill_container">
+                            <?php foreach ($order_result_by_id as $key => $value) : ?>
+                                <?php $quantity_result = select_quantity_order_product($value['order_id']);
+                                ?>
                                 <div class="bill_container_detail">
                                     <?php //$total_quantity += $value['quantity'];
                                     $status_id = $value['status_id'];
@@ -163,13 +129,29 @@
                                     <?php $product_name_result = select_product_order_product($value['order_id']); ?>
                                     <span style="margin: 8px 0;display: block;">Sản Phẩm: </span>
                                     <?php foreach ($product_name_result as $key => $product) : ?>
-                                        <div class="product_info">
-                                            <span class="product_name"><?= $product['product_name'] ?> </span>
-                                            <div style="margin-top:8px;">
-                                                <?php $color_result = select_color_name_by_id($product['color_name_id']); ?>
-                                                <?php $size_result = select_size_by_id($product['size_id']); ?>
-                                                <span class="size_name">MÀU: <?= $color_result['color_name']; ?></span>
-                                                <span class="color_name">SIZE: <?= $size_result['size_name'] ?></span>
+                                        <?php $color_result = select_color_name_by_id($product['color_name_id']); ?>
+                                        <div style="display: flex; align-items: center; justify-content: space-between" class="product_info">
+                                            <div style="display: flex; align-items: center; gap: 15px;" >  
+                                                    <div class="favoriteProduct-img-first" style="width: 104px;">
+                                                        <a  href="/du_an1/product_detail&product_id=<?= $product['product_id'] ?>">
+                                                            <img src="..<?= $ROOT_URL . $color_result['color_image'] ?>" alt="" />
+                                                        </a>
+                                                    </div> 
+                                                <div>
+                                                    <span class="product_name"><?= $product['product_name'] ?> </span>
+                                                    <div style="margin-top:8px;">
+                                                        <?php $color_result = select_color_name_by_id($product['color_name_id']); ?>
+                                                        <?php $size_result = select_size_by_id($product['size_id']); ?>
+                                                        <span class="size_name">MÀU: <?= $color_result['color_name']; ?></span>
+                                                        <span class="color_name">SIZE: <?= $size_result['size_name'] ?></span>
+                                                        <span style="margin-left: 15px" class="color_name">SỐ LƯỢNG: <?= $product['quantity'] ?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                            <a href="/du_an1/product_detail&product_id=<?= $product['product_id'] ?>" style="width: 150px" class="btn_view_product">
+                                                <button style="width: 150px"  type="button" class="view_product">Xem Sản Phẩm</button>
+                                            </a>
                                             </div>
                                         </div>
                                     <?php endforeach ?>
@@ -177,6 +159,8 @@
                                     <span class="payment_methods">Phương thức thanh toán: <span class="payment_method">
                                             <?php if ($value['pay_methods'] == 1) {
                                                 echo "Thanh toán khi nhận hàng";
+                                            } else if ($value['pay_methods'] == 2) {
+                                                echo "Thanh toán Bằng cách chuyển khoản";
                                             } else {
                                                 echo "Thanh toán MOMO";
                                             }
@@ -200,13 +184,24 @@
                                     <?php endif ?>
 
                                 </div>
-                            </div>
                             <hr>
-                        <?php endforeach ?>
-                    </div>        
-            <?php else : ?>
+
+                            <?php endforeach ?>
+                        </div>
+                    </div>
+                    <?php else : ?>
                 <div class="empty_product__notifi">
-                    Bạn chưa có sản phẩm nào
+                    <?php if($statusid == 1):?>
+                        BẠN CHƯA KHÔNG CÓ ĐƠN HÀNG NÀO ĐANG CHỜ XÁC NHẬN
+                    <?php elseif($statusid == 2): ?>
+                        BẠN CHƯA KHÔNG CÓ ĐƠN HÀNG NÀO ĐÃ ĐƯỢC XÁC NHẬN
+                    <?php elseif($statusid == 3): ?>
+                        BẠN CHƯA KHÔNG CÓ ĐƠN HÀNG NÀO ĐANG ĐƯỢC GIAO
+                    <?php elseif($statusid == 4): ?>
+                        BẠN CHƯA KHÔNG CÓ ĐƠN HÀNG NÀO ĐÃ HOÀN THÀNH
+                    <?php elseif($statusid == 5): ?>
+                        BẠN CHƯA KHÔNG CÓ ĐƠN HÀNG NÀO ĐÃ BỊ HỦY
+                    <?php endif ?>
                 </div>
             <?php endif ?>
         </div>
