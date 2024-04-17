@@ -25,7 +25,6 @@
                                 <td><?php echo $name_category ?></td>
                                 <td>
                                     <a href="<?php echo $edit ?>"><input class="btn btn-success" type="button" value="Sửa"></a>
-                                    <a href="<?php echo $delete ?>"><input class="btn btn-warning" type="button" value="Xóa"></a>
                                 </td>
                             </tr>
 
