@@ -17,7 +17,6 @@
                         foreach ($list as $key) {
                             extract($key);
                             $edit = "index.php?act=editCategory&id_cate=$id_category";
-                            $delete = "index.php?act=deleteCategory&id_cate=$id_category";
 
                         ?>
                             <tr>
