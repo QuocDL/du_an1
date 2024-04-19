@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2024 at 05:04 AM
+-- Generation Time: Apr 19, 2024 at 03:34 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -177,6 +177,14 @@ CREATE TABLE `comment` (
   `product_id` int(11) NOT NULL,
   `comment_time` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `content`, `id`, `product_id`, `comment_time`) VALUES
+(48, 'ákndaksndas\r\n', 1, 114, '2024-04-17'),
+(49, 'ádasdasdasdasdasda', 1, 89, '2024-04-17');
 
 -- --------------------------------------------------------
 
@@ -449,6 +457,21 @@ CREATE TABLE `orders` (
   `delivery_charges` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `customer_id`, `receiver_name`, `receiver_address`, `receiver_number_phone`, `receiver_email`, `receiver_note`, `status_id`, `created_at`, `completed_at`, `pay_methods`, `total_price`, `delivery_charges`) VALUES
+(132, 1, 'Lương Chính Quốc', 'Cao Bằng', '0383144530', 'quoclcph18659@gmail.com', '', 4, '2024-04-16 17:54:16', '0000-00-00 00:00:00', 1, 490000, 0),
+(133, 1, 'Lương Chính Quốc', 'Cao Bằng', '0383144530', 'quoclcph18659@gmail.com', '', 3, '2024-04-16 18:31:41', '0000-00-00 00:00:00', 1, 442740, 0),
+(134, 1, 'Lương Chính Quốc', 'Cao Bằng', '0383144530', 'quoclcph18659@gmail.com', '', 5, '2024-04-16 18:32:42', '0000-00-00 00:00:00', 1, 442740, 0),
+(135, 1, 'Lương Chính Quốc', 'Cao Bằng', '0383144530', 'quoclcph18659@gmail.com', '', 5, '2024-04-16 18:32:58', '0000-00-00 00:00:00', 1, 442740, 0),
+(136, 1, 'Lương Chính Quốc', 'Cao Bằng', '0383144530', 'quoclcph18659@gmail.com', '', 4, '2024-04-16 19:16:44', '0000-00-00 00:00:00', 1, 610060, 0),
+(137, 1, 'Lương Chính Quốc test', 'Cao Bằng', '0383144530', 'quoclcph18659@gmail.com', '', 4, '2024-04-16 19:17:31', '0000-00-00 00:00:00', 1, 980000, 0),
+(138, 1, 'Lương Chính Quốc', 'Cao Bằng', '0383144530', 'quoclcph18659@gmail.com', '', 5, '2024-04-17 12:58:15', '0000-00-00 00:00:00', 1, 1351840, 0),
+(139, 1, 'Lương Chính Quốc', 'Cao Bằng', '0383144530', 'quoclcph18659@gmail.com', '', 1, '2024-04-17 13:08:57', '0000-00-00 00:00:00', 1, 885480, 0),
+(140, 1, 'Lương Chính Quốc', 'Cao Bằng', '0383144530', 'quoclcph18659@gmail.com', '', 4, '2024-04-17 13:46:36', '0000-00-00 00:00:00', 1, 938840, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -463,6 +486,23 @@ CREATE TABLE `order_product` (
   `size_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_product`
+--
+
+INSERT INTO `order_product` (`order_product_id`, `order_id`, `product_id`, `color_name_id`, `size_id`, `quantity`) VALUES
+(124, 132, 78, 125, 15, 1),
+(125, 133, 79, 126, 14, 1),
+(126, 134, 79, 126, 14, 1),
+(127, 135, 79, 126, 17, 1),
+(128, 136, 85, 131, 8, 1),
+(129, 137, 78, 125, 15, 2),
+(130, 138, 100, 151, 15, 1),
+(131, 138, 100, 151, 18, 1),
+(132, 138, 115, 181, 16, 1),
+(133, 139, 79, 126, 17, 2),
+(134, 140, 100, 152, 15, 2);
 
 -- --------------------------------------------------------
 
@@ -491,36 +531,36 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `main_image_url`, `hover_main_image_url`, `product_price`, `discount`, `gender`, `product_desc`, `product_code`, `view`, `created_at`, `category_id`, `product_status`) VALUES
-(70, 'Áo Sơ Mi Nữ Sát Nách Cổ Bèo Túi Thêu Họa Tiết Form', '/asset/images/64e455624272910s23shsw031_star_white-ao-so-mi-nu_1__2.jpg', '/asset/images/64e455624293410s23shsw031_star_white-ao-so-mi-nu_3__2.jpg', 499000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23SHSW031', 44, '2024-03-06 06:27:46', 2, 1),
-(75, 'Áo Thun Nam Tay Ngắn Cổ Tròn Họa Tiết In Form Regu', '/asset/images/64ec6a34688d910s23tss016-angel-falls-_1__1.jpg', '/asset/images/64ec6a3468a6a10s23tss016-angel-falls-_2__1.jpg', 383000, 0, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23TSS016', 119, '2024-03-06 06:37:00', 1, 2),
+(70, 'Áo Sơ Mi Nữ Sát Nách Cổ Bèo Túi Thêu Họa Tiết F', '/asset/images/64e455624272910s23shsw031_star_white-ao-so-mi-nu_1__2.jpg', '/asset/images/64e455624293410s23shsw031_star_white-ao-so-mi-nu_3__2.jpg', 499000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23SHSW031', 44, '2024-03-06 06:27:46', 2, 1),
+(75, 'Áo Thun Nam Tay Ngắn Cổ Tròn Họa Tiết In Form Regu', '/asset/images/64ec6a34688d910s23tss016-angel-falls-_1__1.jpg', '/asset/images/64ec6a3468a6a10s23tss016-angel-falls-_2__1.jpg', 383000, 0, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23TSS016', 120, '2024-03-06 06:37:00', 1, 2),
 (76, 'Áo Sơ Mi Nam Tay Dài Flannel Túi Đắp Kẻ Caro Form ', '/asset/images/64ec71aa40ff7ao-so-mi-15-10f23shl030-green-_1__1.jpg', '/asset/images/64ec71aa410f7ao-so-mi-15-10f23shl030-green-_2__1.jpg', 638000, 0, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F23SHL030', 3, '2024-03-06 06:40:20', 1, 1),
-(78, 'Áo Polo Nam Interlock Pique Trơn Phối Cổ Tay Form ', '/asset/images/64ec9f1fc267810s23pol041-pumpkin-spice-ao-polo-nam_1__3.jpg', '/asset/images/64ec9f1fc273510s23pol041-pumpkin-spice-ao-polo-nam_2__3.jpg', 490000, 0, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23POL041', 4, '2024-03-06 06:50:22', 1, 2),
-(79, 'Áo Polo Nam Tay Ngắn Phối Sọc Form Fitted', '/asset/images/64eca0de1465b10s23pol060_blue_fog-ao-polo-nam_5__1_2.jpg', '/asset/images/64eca0de1473d10s23pol060_blue_fog-ao-polo-nam_7__1_2.jpg', 471000, 6, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23POL060', 3, '2024-03-06 06:52:43', 1, 2),
+(78, 'Áo Polo Nam Interlock Pique Trơn Phối Cổ Tay Form ', '/asset/images/64ec9f1fc267810s23pol041-pumpkin-spice-ao-polo-nam_1__3.jpg', '/asset/images/64ec9f1fc273510s23pol041-pumpkin-spice-ao-polo-nam_2__3.jpg', 490000, 0, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23POL041', 9, '2024-03-06 06:50:22', 1, 2),
+(79, 'Áo Polo Nam Tay Ngắn Phối Sọc Form Fitted', '/asset/images/64eca0de1465b10s23pol060_blue_fog-ao-polo-nam_5__1_2.jpg', '/asset/images/64eca0de1473d10s23pol060_blue_fog-ao-polo-nam_7__1_2.jpg', 471000, 6, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23POL060', 8, '2024-03-06 06:52:43', 1, 2),
 (80, 'Áo Sơ Mi Nam Tay Ngắn Cuban Shirt Kẻ Sọc Form Regu', '/asset/images/64eca2583360810s23shs017_almond_milk_1__2.jpg', '/asset/images/64eca2583372910s23shs017_almond_milk_2__2.jpg', 490000, 3, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23SHS017', 4, '2024-03-06 06:47:46', 1, 2),
 (81, 'Quần Jean Nam Ống Rộng Trơn Form Wide Leg', '/asset/images/64eca40d800fd10s22dpa015_navy-quan-jean-nam_1__2.jpg', '/asset/images/64eca40d801da10s22dpa015_navy-quan-jean-nam_2__2.jpg', 511000, 6, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S22DPA015', 13, '2024-03-06 06:57:46', 1, 1),
-(85, 'Quần Jean Nam Rách Gối Form Skinny', '/asset/images/64eca83d9fea410f20dpa100cr1_3__1.jpg', '/asset/images/64eca83d9ff9410f20dpa100cr1_2__1_1_1.jpg', 649000, 6, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22DPA047', 6, '2024-03-06 07:01:20', 1, 2),
+(85, 'Quần Jean Nam Rách Gối Form Skinny', '/asset/images/64eca83d9fea410f20dpa100cr1_3__1.jpg', '/asset/images/64eca83d9ff9410f20dpa100cr1_2__1_1_1.jpg', 649000, 6, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22DPA047', 7, '2024-03-06 07:01:20', 1, 2),
 (86, 'Quần Dài Kaki Nam Twill Form Straight', '/asset/images/64eca9668941910f22pca012_overcast_1__3.jpg', '/asset/images/64eca966894f810f22pca012_overcast_3.jpg', 550000, 10, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22PCA012', 1, '2024-03-06 08:05:10', 1, 2),
 (87, 'Quần Kaki Nam Cotton Spandex Form Slim', '/asset/images/64ecab224a916quan-kaki-nam-10f21pca001cr1_ermine-min_2__3_1.jpg', '/asset/images/64ecab224a9e6quan-kaki-nam-10f21pca001cr1_ermine-min_1__3_1.jpg', 480000, 8, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F21PCA001CR1', 0, '2024-03-06 08:20:02', 1, 2),
-(88, 'Áo Hoodie Unisex Tay Dài In Hình Form Regular', '/asset/images/64ecae0a43df210f22hodu002_arabian_spice_2__3_1.jpg', '/asset/images/64ecae0a43ecd10f22hodu002_arabian_spice_3__3_1.jpg', 550000, 10, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22HODU002', 5, '2024-03-06 07:25:22', 1, 1),
-(89, 'Áo Hoodie Nam Tay Dài In Hình Form Regular', '/asset/images/64ecaebaac56310f21hod005_3__1_2.jpg', '/asset/images/64ecaebaac68910f21hod005_2__3_1.jpg', 650000, 12, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F21HOD005', 1, '2024-03-06 07:32:13', 1, 1),
+(88, 'Áo Hoodie Unisex Tay Dài In Hình Form Regular', '/asset/images/64ecae0a43df210f22hodu002_arabian_spice_2__3_1.jpg', '/asset/images/64ecae0a43ecd10f22hodu002_arabian_spice_3__3_1.jpg', 550000, 10, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22HODU002', 31, '2024-03-06 07:25:22', 1, 1),
+(89, 'Áo Hoodie Nam Tay Dài In Hình Form Regular', '/asset/images/64ecaebaac56310f21hod005_3__1_2.jpg', '/asset/images/64ecaebaac68910f21hod005_2__3_1.jpg', 650000, 12, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F21HOD005', 9, '2024-03-06 07:32:13', 1, 1),
 (90, 'Áo Thun Nam Tay Ngắn Vải Coffee In Chữ Form Loose', '/asset/images/64ecb4988a06d10s23tss062-ao-thun_2__7.jpg', '/asset/images/64ecb4988a17310s23tss062-ao-thun_3__7.jpg', 360000, 5, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23TSS062', 1, '2024-03-06 07:36:58', 1, 2),
 (92, 'Áo Sơ Mi Nữ Tay Dài Trơn Xếp Ly Form Regular', '/asset/images/64ecd5fa8cd7764d48ae42ac2710s22shlw004_beige-ao-so-mi-nu_1__1.jpg', '/asset/images/64ecd5fa8ce7864d48ae42ad2d10s22shlw004_beige-ao-so-mi-nu_2__1_1.jpg', 450000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S22SHLW004', 8, '2024-03-06 07:41:13', 2, 2),
 (97, 'Áo Sweater Nữ Vải Nỉ Tay Dài Trơn Form Regular', '/asset/images/64ef6f078be3e10f22swew001_chalk_pink_4__2.jpg', '/asset/images/64ef6f078bf4a10f22swew001_chalk_pink_3__2_1.jpg', 390000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22SWEW001', 6, '2024-03-06 07:48:05', 2, 2),
-(98, 'Áo Kiểu Nữ Tay Dài Nhún Tay Form Loose', '/asset/images/64f45253723b9ao-so-mi-nu-10f22shlw003_black_5__4.jpg', '/asset/images/64f45253724b0ao-so-mi-nu-10f22shlw003_black_6__4.jpg', 549000, 60, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22SHLW003', 4, '2024-03-06 07:55:05', 2, 2),
-(100, 'Áo Hoodie Nữ Tay Dài Có Mũ Nhãn Trang Trí', '/asset/images/64f454d126dca10f22hodw005_pink_8__3.jpg', '/asset/images/64f454d126eb510f22hodw005_pink_10__3.jpg', 479000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22HODW005', 2, '2024-03-06 08:02:15', 2, 2),
+(98, 'Áo Kiểu Nữ Tay Dài Nhún Tay Form Loose', '/asset/images/64f45253723b9ao-so-mi-nu-10f22shlw003_black_5__4.jpg', '/asset/images/64f45253724b0ao-so-mi-nu-10f22shlw003_black_6__4.jpg', 549000, 60, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22SHLW003', 5, '2024-03-06 07:55:05', 2, 2),
+(100, 'Áo Hoodie Nữ Tay Dài Có Mũ Nhãn Trang Trí', '/asset/images/64f454d126dca10f22hodw005_pink_8__3.jpg', '/asset/images/64f454d126eb510f22hodw005_pink_10__3.jpg', 479000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22HODW005', 4, '2024-03-06 08:02:15', 2, 2),
 (102, 'Áo Blazer Nữ Tay Dài Linen Xẻ Sau Form Fitted', '/asset/images/64f457777f9a910s21vesw001-brow.2_1_1.jpg', '/asset/images/64f457777fa9010s21vesw001-brow.4_1_1.jpg', 950000, 74, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S21VESW001', 2, '2024-03-06 09:30:22', 2, 1),
 (103, 'Quần Jean Nữ Trơn Phối Lai Form Straight', '/asset/images/64f45ae035e78quan-jean-10s23dpaw013-m-blue_1__3.jpg', '/asset/images/64f45ae035f49quan-jean-10s23dpaw013-m-blue_8__3.jpg', 579000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23DPAW013', 1, '2024-03-06 09:34:20', 2, 1),
 (104, 'Quần Short Nữ Rút Dây Kẻ Sọc Form Panama', '/asset/images/64f45be099596quan-short-nu-10s23pshw002-blue-stripe_1__1_1_1.jpg', '/asset/images/64f45be099645quan-short-nu-10s23pshw002-blue-stripe_11__1.jpg', 379000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23PSHW002', 5, '2024-03-06 09:56:07', 2, 2),
 (108, 'Quần Short Nam Phối Dây Rút Họa Tiết In Form Relax', '/asset/images/64f461fe3da0equan_xam.jpg', '/asset/images/64f461fe3dae5quan_xam_mat_sau.jpg', 429000, 2, 0, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S23PSH021', 5, '2024-03-06 10:14:02', 1, 2),
-(109, 'Áo Khoác Jean Nữ Tay Dài Túi Mổ Trơn Form Regular', '/asset/images/64f463a2610b2ao-khoac-jean-10s22djaw002_nomad_1__4.jpg', '/asset/images/64f463a2611d2ao-khoac-jean-10s22djaw002_nomad_2__4.jpg', 650000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S22DJAW002', 2, '2024-03-06 10:58:45', 2, 1),
+(109, 'Áo Khoác Jean Nữ Tay Dài Túi Mổ Trơn Form Regular', '/asset/images/64f463a2610b2ao-khoac-jean-10s22djaw002_nomad_1__4.jpg', '/asset/images/64f463a2611d2ao-khoac-jean-10s22djaw002_nomad_2__4.jpg', 650000, 2, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S22DJAW002', 3, '2024-03-06 10:58:45', 2, 1),
 (110, 'Chân Váy Jean Nữ Dáng Dài Form Regular', '/asset/images/64f4650922dc0chan-vay-nu-10f22dskw002_d-navy_2__1.jpg', '/asset/images/64f4650922f31chan-vay-nu-10f22dskw002_d-navy_5__1.jpg', 529000, 53, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22DSKW002', 9, '2024-03-06 11:01:24', 2, 2),
 (112, 'Quần Váy Nữ Lưng Thun Polyester Skirtpant', '/asset/images/64f48b85ed5ac10f22pcaw005_beige_1__1_1.jpg', '/asset/images/64f48b85ed6c410f22pcaw005_beige_3__1_1.jpg', 550000, 64, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10F22PCAW005', 4, '2024-03-06 11:30:12', 2, 2),
 (113, 'Áo Thun Nữ Tay Ngắn Trơn Form Regular', '/asset/images/64f48e87f0b1f10s21tshw007-black-1_2.jpg', '/asset/images/64f48e87f0be010s21tshw007-black-4_2.jpg', 216000, 0, 1, 'THÔNG TIN CHI TIẾT ÁO SƠ MI NỮ SÁT NÁCH CỔ BÈO TÚI...', '10S21TSHW007', 1, '2024-03-06 11:42:14', 2, 1),
-(114, 'Áo Sơ Mi Nữ Tay Dài Trơn Thắt Eo Form Fitted', '/asset/images/64f491a64d2d610s21shlw016-whte-1_2.jpg', '/asset/images/64f491a64d41010s21shlw016-whte-5_2.jpg', 511000, 0, 1, 'đẹp', '10S21SHLW016', 1, '2023-09-03 14:01:10', 2, 1),
-(115, 'Áo Len Nữ Dệt Kim Tay Ngắn Trơn Form Slim', '/asset/images/64f4927bc44c410f21kniw029-grey-1_1.jpg', '/asset/images/64f4927bc45ff10f21kniw029-grey-5_1.jpg', 413000, 0, 1, 'đẹp', '10F21KNIW029', 7, '2023-09-03 14:04:43', 2, 1),
-(116, 'Chân Váy Mini Nữ Phối Bèo Form Fitted', '/asset/images/64f49372d58d010s22skiw006-brown_3__2.jpg', '/asset/images/64f49372d59e110s22skiw006-brown_4__2.jpg', 413000, 0, 1, 'đẹp', '10S22SKIW006', 7, '2023-09-03 14:08:50', 2, 1),
-(117, 'Áo Polo Nam Interlock Pique Phối Bo Và Tay Form Re', '/asset/images/64f4960431bb810s23pol037_rain_forest-ao-polo-nam_17_1__1.jpg', '/asset/images/64f4960431c7e10s23pol037_rain_forest-ao-polo-nam_17_2__1.jpg', 520000, 0, 0, 'đẹp', '10S23POL037', 22, '2023-09-03 14:19:48', 1, 1),
-(119, 'Quần Short Thể Thao In Chuyển Nhiệt Form Regular', '/asset/images/64f498a46e65b10s23psha001_navy_77_2__1.jpg', '/asset/images/64f498a46e75b10s23psha001_navy_77_1__1.jpg', 216000, 0, 0, 'đẹp', '10S23PSHA001', 123, '2023-09-03 14:31:00', 1, 1);
+(114, 'Áo Sơ Mi Nữ Tay Dài Trơn Thắt Eo Form Fitted', '/asset/images/64f491a64d2d610s21shlw016-whte-1_2.jpg', '/asset/images/64f491a64d41010s21shlw016-whte-5_2.jpg', 511000, 0, 1, 'đẹp', '10S21SHLW016', 28, '2024-03-07 15:01:10', 2, 1),
+(115, 'Áo Len Nữ Dệt Kim Tay Ngắn Trơn Form Slim', '/asset/images/64f4927bc44c410f21kniw029-grey-1_1.jpg', '/asset/images/64f4927bc45ff10f21kniw029-grey-5_1.jpg', 413000, 0, 1, 'đẹp', '10F21KNIW029', 18, '2024-03-07 15:04:43', 2, 1),
+(116, 'Chân Váy Mini Nữ Phối Bèo Form Fitted', '/asset/images/64f49372d58d010s22skiw006-brown_3__2.jpg', '/asset/images/64f49372d59e110s22skiw006-brown_4__2.jpg', 413000, 0, 1, 'đẹp', '10S22SKIW006', 10, '2024-03-07 15:08:50', 2, 1),
+(117, 'Áo Polo Nam Interlock Pique Phối Bo Và Tay Form Re', '/asset/images/64f4960431bb810s23pol037_rain_forest-ao-polo-nam_17_1__1.jpg', '/asset/images/64f4960431c7e10s23pol037_rain_forest-ao-polo-nam_17_2__1.jpg', 520000, 0, 0, 'đẹp', '10S23POL037', 22, '2024-03-07 15:19:48', 1, 1),
+(119, 'Quần Short Thể Thao In Chuyển Nhiệt Form Regular', '/asset/images/64f498a46e65b10s23psha001_navy_77_2__1.jpg', '/asset/images/64f498a46e75b10s23psha001_navy_77_1__1.jpg', 216000, 0, 0, 'đẹp', '10S23PSHA001', 125, '2024-03-07 15:31:00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -718,16 +758,8 @@ CREATE TABLE `purchased_orders` (
 --
 
 INSERT INTO `purchased_orders` (`purchased_order_id`, `customer_id`, `product_id`, `size_id`, `color_name_id`, `quantity`, `created_at`, `completed_at`, `customer_email`, `customer_phone_number`, `total_price`) VALUES
-(1, 1, 76, 15, 122, 0, '2023-09-05 12:07:52', '0000-00-00 00:00:00', 'datntph24947@fpt.edu.vn', '0964863742', 638000),
-(2, 1, 91, 7, 139, 0, '2023-09-05 12:05:56', '2023-09-05 12:40:02', 'datntph24947@fpt.edu.vn', '0964863742', 469420),
-(3, 1, 75, 17, 119, 2, '2023-09-04 16:58:02', '2023-09-04 17:01:08', 'datntph24947@fpt.edu.vn', '0964863742', 766000),
-(4, 1, 70, 15, 114, 1, '2023-08-22 13:27:46', '2024-03-10 02:15:34', 'datntph24947@fpt.edu.vn', '0964863742', 489020),
-(5, 1, 75, 17, 119, 1, '2023-08-28 16:34:44', '2024-03-10 02:15:53', 'datntph24947@fpt.edu.vn', '0964863742', 0),
-(6, 1, 119, 15, 187, 1, '2023-09-03 21:31:00', '0000-00-00 00:00:00', 'quoclcph18659@gmail.com', '0383144530', 216000),
-(7, 1, 117, 16, 183, 1, '2023-09-03 21:19:48', '2024-03-13 14:26:52', 'quoclcph18659@gmail.com', '0383144530', 0),
-(8, 1, 116, 17, 182, 1, '2023-09-03 21:08:50', '2024-03-13 14:26:52', 'quoclcph18659@gmail.com', '0383144530', 0),
-(9, 1, 117, 16, 183, 1, '2023-09-03 21:19:48', '0000-00-00 00:00:00', 'quoclcph18659@gmail.com', '0383144530', 520000),
-(10, 1, 119, 17, 187, 1, '2023-09-03 21:31:00', '0000-00-00 00:00:00', 'quoclcph18659@gmail.com', '0383144530', 216000);
+(18, 1, 78, 15, 125, 2, '2024-03-05 22:50:22', '0000-00-00 00:00:00', 'quoclcph18659@gmail.com', '0383144530', 980000),
+(19, 1, 100, 15, 152, 2, '2024-03-06 00:02:15', '0000-00-00 00:00:00', 'quoclcph18659@gmail.com', '0383144530', 938840);
 
 -- --------------------------------------------------------
 
@@ -770,11 +802,11 @@ INSERT INTO `quantities` (`quantity_id`, `product_id`, `color_name_id`, `size_id
 (47, 78, 121, 16, 5),
 (48, 78, 121, 17, 3),
 (49, 78, 121, 18, 8),
-(50, 78, 125, 15, 6),
+(50, 78, 125, 15, 3),
 (51, 78, 125, 16, 5),
 (52, 78, 125, 18, 3),
-(53, 79, 126, 14, 2),
-(54, 79, 126, 17, 6),
+(53, 79, 126, 14, 0),
+(54, 79, 126, 17, 3),
 (55, 79, 126, 18, 9),
 (56, 79, 127, 14, 6),
 (57, 79, 127, 16, 6),
@@ -789,7 +821,7 @@ INSERT INTO `quantities` (`quantity_id`, `product_id`, `color_name_id`, `size_id
 (66, 81, 130, 8, 6),
 (67, 81, 130, 9, 6),
 (68, 81, 130, 12, 2),
-(78, 85, 131, 8, 3),
+(78, 85, 131, 8, 2),
 (79, 85, 131, 12, 4),
 (80, 85, 131, 9, 2),
 (81, 86, 132, 9, 6),
@@ -803,7 +835,7 @@ INSERT INTO `quantities` (`quantity_id`, `product_id`, `color_name_id`, `size_id
 (89, 88, 135, 15, 8),
 (90, 88, 135, 17, 3),
 (91, 88, 135, 18, 6),
-(92, 89, 136, 16, 4),
+(92, 89, 136, 16, -8),
 (93, 89, 136, 17, 7),
 (94, 90, 137, 17, 8),
 (95, 90, 137, 18, 3),
@@ -822,11 +854,11 @@ INSERT INTO `quantities` (`quantity_id`, `product_id`, `color_name_id`, `size_id
 (116, 98, 146, 15, 7),
 (117, 98, 146, 16, 6),
 (118, 98, 146, 17, 2),
-(123, 100, 151, 15, 4),
+(123, 100, 151, 15, 3),
 (124, 100, 151, 16, 2),
 (125, 100, 151, 17, 6),
-(126, 100, 151, 18, 9),
-(127, 100, 152, 15, 4),
+(126, 100, 151, 18, 8),
+(127, 100, 152, 15, 2),
 (128, 100, 152, 16, 4),
 (129, 100, 152, 17, 2),
 (131, 102, 154, 18, 4),
@@ -866,16 +898,16 @@ INSERT INTO `quantities` (`quantity_id`, `product_id`, `color_name_id`, `size_id
 (180, 114, 180, 15, 7),
 (181, 114, 180, 17, 7),
 (182, 114, 180, 18, 4),
-(183, 115, 181, 16, 4),
+(183, 115, 181, 16, 3),
 (184, 115, 181, 18, 4),
 (185, 115, 181, 17, 10),
-(186, 116, 182, 15, 4),
+(186, 116, 182, 15, 3),
 (187, 116, 182, 17, 8),
 (188, 116, 182, 18, 8),
 (189, 117, 183, 16, 4),
 (190, 117, 183, 18, 5),
 (191, 117, 183, 17, 5),
-(195, 119, 187, 15, 5),
+(195, 119, 187, 15, 4),
 (196, 119, 187, 17, 6),
 (197, 119, 187, 18, 7);
 
@@ -926,11 +958,10 @@ CREATE TABLE `status` (
 
 INSERT INTO `status` (`status_id`, `status`) VALUES
 (1, 'Chưa xử lý'),
-(2, 'Đang xử lý'),
+(2, 'Đã xử lý'),
 (3, 'Đang vận chuyển'),
 (4, 'Đã giao hàng'),
-(5, 'Thanh toán thành công'),
-(6, 'Đã hủy');
+(5, 'Đã hủy');
 
 -- --------------------------------------------------------
 
@@ -955,7 +986,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `full_name`, `username`, `password`, `email`, `address`, `phone`, `role`, `image_user`) VALUES
-(1, 'Lương Chính Quốc', 'quoccoicb321', 'yasuo233', 'quoclcph18659@gmail.com', 'Cao Bằng', '0383144530', 1, '');
+(1, 'Lương Chính Quốc', 'quoccoicb321', 'yasuo233', 'quoclcph18659@gmail.com', 'Cao Bằng', '0383144530', 1, ''),
+(4, 'Nguyễn Khắc Hải Nam', 'hainam1234', 'yasuo233', 'hainam1234@gmail.com', 'Bắc Ninh', '0123456789', 1, ''),
+(5, 'Trần Hữu Trung', 'trung1234', 'yasuo233', 'trung1234@gmail.com', 'Hà Tĩnh ', '0123456789', 0, ''),
+(6, 'testuser', 'áondpaosmd', 'aiosndoansd', 'qopaspodjpadoj@gmail.com', 'hà nội ', '2131293123', 0, '');
 
 --
 -- Indexes for dumped tables
@@ -1112,7 +1146,7 @@ ALTER TABLE `color_type`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `images`
@@ -1124,13 +1158,13 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
 -- AUTO_INCREMENT for table `order_product`
 --
 ALTER TABLE `order_product`
-  MODIFY `order_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `order_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -1154,7 +1188,7 @@ ALTER TABLE `product_size`
 -- AUTO_INCREMENT for table `purchased_orders`
 --
 ALTER TABLE `purchased_orders`
-  MODIFY `purchased_order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `purchased_order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `quantities`
@@ -1178,7 +1212,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
