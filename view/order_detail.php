@@ -255,13 +255,7 @@
                     Thanh toán bằng chuyển khoản
                   </label>
                 </div> -->
-                <div class="form-check payment-check paypal">
-                  <input class="form-check-input" type="radio" value="3" name="payment" id="flexRadioDefault3">
-                  <label class="form-check-label flexRadioDefault" for="flexRadioDefault3">
-                    Thanh toán MOMO
-                  </label>
-                  <!-- <img src="../../du_an1/asset/images/payment-cards.png" alt=""> -->
-                </div>
+                
               </div>
               <?php if (isset($_SESSION['cart'])) : ?>
                 <button type="button" class="site-btn" id="btn-pay">Thanh toán <span class="btn-pay"><?= $total_new_price ?></span></button>
